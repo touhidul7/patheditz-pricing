@@ -1,0 +1,123 @@
+[
+    {
+      "name": "Editing",
+      "description": "Transform your online presence with custom, scalable, and secure website development solutions.",
+      "url": "#",
+      "categories": [
+        {
+          "name": "Cliping Path",
+          "basePrice": 100,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Background Removal",
+          "basePrice": 250,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Image Masking",
+          "basePrice": 50,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Ghost Mannequin",
+          "basePrice": 50,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Shadow Creation",
+          "basePrice": 50,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Multi-Cliping Path",
+          "basePrice": 50,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Color Correction",
+          "basePrice": 50,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "E-commerce Image Editing",
+          "basePrice": 50,
+          "imageUrl": "https://via.placeholder.com/150"
+        }
+      ]
+    },
+    {
+      "name": "Retouching",
+      "description": "Unlock your online store's full potential with tailored e-commerce solutions that drive sales and enhance customer experience.",
+      "url": "#",
+      "categories": [
+        {
+          "name": "Photo Retouchning",
+          "basePrice": 200,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Jewelry Retouching",
+          "basePrice": 80,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Product Photo Retouching",
+          "basePrice": 80,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Beauty Retouching",
+          "basePrice": 80,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Headshot Retouching",
+          "basePrice": 80,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Newborn Baby Photo Retouching",
+          "basePrice": 80,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Food Photo Retouching",
+          "basePrice": 80,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Real Estate Photo Retouching",
+          "basePrice": 80,
+          "imageUrl": "https://via.placeholder.com/150"
+        }
+      ]
+    },
+    {
+      "name": "E-Commerce",
+      "description": "Elevate your digital presence with tailored and scalable web applications designed to meet your unique business needs..",
+      "url": "#",
+      "categories": [
+        {
+          "name": "Essential Editing",
+          "basePrice": 300,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Amazon, E-Bay, Shopify Ready",
+          "basePrice": 300,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "E-Commerce 360° Editing",
+          "basePrice": 300,
+          "imageUrl": "https://via.placeholder.com/150"
+        },
+        {
+          "name": "Image Optimization",
+          "basePrice": 300,
+          "imageUrl": "https://via.placeholder.com/150"
+        }
+      ]
+    }
+]
