@@ -16,6 +16,8 @@ function App() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
 
+
+
   useEffect(() => {
     axios
       .get("/data/pricing.json")
@@ -95,10 +97,11 @@ function App() {
                         {selectedService.description}
                       </p>
                     </div>
-                    <div className="border-[1px] border-gray-900 w-fit  p-4 rounded-lg">
+                    {/* Image */}
+                    <div className=" w-fit  p-4 rounded-lg">
                       <img
-                        className="h-[300px] w-auto lg:w-[300px!important] serviceimage"
-                        src={selectedService.imageUrl}
+                        className="h-[300px] w-auto lg:w-full serviceimage"
+                        src={"https://patheditz.com/wp-content/uploads/2024/06/about-section.gif"}
                         alt={selectedService.name}
                       />
                     </div>
@@ -327,11 +330,7 @@ function RadioInput({ options, radioinput, setradioinput }) {
         {options.map((option) => (
           <label
             key={option}
-            className={`shadow-sm text-lg text-center rounded-lg block py-2 px-4 lg:px-10 cursor-pointer bg-[#F8F6FA] border-none text-[#A2A6AD] focus:ring-primary-500 shadow-sm-light outline-none ${
-              selectedOption === option
-                ? "bg-[#377DFF] text-[#fff]"
-                : "bg-[#18181B] text-[#000] hover:bg-[#E5EEF7]"
-            }`}
+            className={`shadow-md text-lg text-center rounded-lg block py-2 px-4 lg:px-10 cursor-pointer border-none focus:ring-primary-500 shadow-sm-light outline-none ${selectedOption === option ? "bg-[#377DFF] text-[#fff]": "bg-[#F8F6FA] text-[#000] hover:bg-[#377dffea] hover:text-white"}`}
           >
             <input
               type="radio"
