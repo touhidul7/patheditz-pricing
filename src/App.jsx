@@ -44,23 +44,32 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let basePrice = selectedCategory?.basePrice || 0;
-
-    // Adjust price using timt--------------
-
-    // if (turnaroundDays === "1-3") {
-    //   basePrice *= 1.2;
-    // } else if (turnaroundDays === "4-7") {
-    //   basePrice *= 0.8;
-    // } else if (turnaroundDays === "8-30") {
-    //   basePrice *= 0.6;
-    // }
-
-    // Calculate price using quantity
-    const totalPrice = basePrice * quantity;
-    setPrice(totalPrice);
+    let basePrice = selectedCategory?.basePrice || selectedService?.categories[0]?.basePrice;
+  
+    // Step 1: Complexity-Based Logic
+    let complexityBasedPrice = basePrice;
+    if (complexity === "Medium") {
+      complexityBasedPrice += basePrice * 0.3; // Add 30%
+    } else if (complexity === "Complex") {
+      complexityBasedPrice += basePrice * 0.6; // Add 60%
+    }
+  
+    // Step 2: Time-Based Logic
+    let timeBasedPrice = complexityBasedPrice;
+    if (turnaroundDays === "24h") {
+      timeBasedPrice += complexityBasedPrice * 0.33; // Add 33%
+    } else if (turnaroundDays === "12h") {
+      timeBasedPrice += complexityBasedPrice * 0.66; // Add 66%
+    }
+  
+    // Step 3: Quantity-Based Logic
+    const totalPrice = timeBasedPrice * quantity;
+  
+    setPrice(Math.round(totalPrice));
     setSubmitted(true);
   };
+  
+console.log(selectedService?.categories[0].name);
 
   /*  */
   return (
@@ -85,12 +94,12 @@ function App() {
           <div className="grid gap-6 lg:grid-cols-2 grid-cols-1 w-full lg:px-48 px-4">
             <div >
               {selectedService && (
-                <div className="w-full h-full rounded-lg shadow-lg p-6 border-[1px] border-gray-200">
+                <div className="w-full h-full rounded-lg  p-6  border-gray-200">
                   <div className="flex flex-col gap-4 justify-between">
                     <div>
                       <a href="#">
                         <h5 className="text-2xl font-bold tracking-tight text-[#3A3A3A]">
-                          {selectedService.name}
+                          {selectedCategory?.name || selectedService?.categories[0].name}
                         </h5>
                       </a>
                       <p className="mb-3 font-normal lg:w-[500px] overflow-hidden text-[#3A3A3A]">
@@ -101,7 +110,7 @@ function App() {
                     <div className=" w-fit  p-4 rounded-lg">
                       <img
                         className="h-[300px] w-auto lg:w-full serviceimage"
-                        src={"https://patheditz.com/wp-content/uploads/2024/06/about-section.gif"}
+                        src={selectedCategory?.imageUrl || selectedService?.categories[0].imageUrl}
                         alt={selectedService.name}
                       />
                     </div>
@@ -138,7 +147,7 @@ function App() {
                   </div>
                 )}
 
-                {/* Input Date */}
+                {/* Complexity  */}
                 <div className="mb-8">
                   <RadioInput
                     options={["Simple", "Medium", "Complex"]}
@@ -146,6 +155,7 @@ function App() {
                     setradioinput={setComplexity}
                   />
                 </div>
+                {/* Time */}
                 <div className="mb-8">
                   <RadioInput
                     options={["12h", "24h", "48h"]}
@@ -174,7 +184,7 @@ function App() {
         {submitted && (
           <PriceTable
             service={service}
-            category={category}
+            category={category || selectedService?.categories[0].name}
             turnaroundTime={`${turnaroundDays} days`}
             quantity={quantity}
             price={price}
@@ -271,8 +281,8 @@ function PriceTable({ service, turnaroundTime, quantity, price, category }) {
   return (
     <div>
       <div className="relative overflow-x-auto w-full">
-        <table className=" text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 w-full">
-          <thead className="text-xs uppercase bg-[#18181B] dark:text-gray-400">
+        <table className=" text-sm text-left rtl:text-right text-black w-full">
+          <thead className="text-xs uppercase bg-gray-200 ">
             <tr>
               <th scope="col" className="px-6 lg:px-[43px] py-3">
                 Service
@@ -293,10 +303,10 @@ function PriceTable({ service, turnaroundTime, quantity, price, category }) {
             </tr>
           </thead>
           <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tr className="bg-white border-b ">
               <th
                 scope="row"
-                className="px-6 lg:px-[43px] py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                className="px-6 lg:px-[43px] py-4 font-medium text-gray-900 whitespace-nowrap"
               >
                 {service}
               </th>
@@ -305,9 +315,10 @@ function PriceTable({ service, turnaroundTime, quantity, price, category }) {
               <td className="px-6 lg:px-[43px] py-4">{quantity}</td>
               <td className="px-6 lg:px-[43px] py-4">${price}</td>
               <td className="px-6 lg:px-[43px] py-4">
+              <a href={"path"}>
                 <button className="px-4 bg-[#594FEE] py-1 rounded-lg text-white">
-                  Proceed
-                </button>
+                 Proceed
+                </button></a>
               </td>
             </tr>
           </tbody>

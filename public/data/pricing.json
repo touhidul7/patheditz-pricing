@@ -2,12 +2,13 @@
     {
       "name": "Editing",
       "description": "Transform your online presence with custom, scalable, and secure website development solutions.",
+      "imageUrl": "/pricingimages/clippingpath.png",
       "url": "#",
       "categories": [
         {
           "name": "Cliping Path",
           "basePrice": 100,
-          "imageUrl": "https://via.placeholder.com/150"
+          "imageUrl": "/pricingimages/clippingpath.png"
         },
         {
           "name": "Background Removal",
@@ -49,17 +50,18 @@
     {
       "name": "Retouching",
       "description": "Unlock your online store's full potential with tailored e-commerce solutions that drive sales and enhance customer experience.",
+      "imageUrl": "/pricingimages/2.jpg",
       "url": "#",
       "categories": [
         {
           "name": "Photo Retouchning",
           "basePrice": 200,
-          "imageUrl": "https://via.placeholder.com/150"
+          "imageUrl": "/pricingimages/2.jpg"
         },
         {
           "name": "Jewelry Retouching",
           "basePrice": 80,
-          "imageUrl": "https://via.placeholder.com/150"
+          "imageUrl": "/public/pricingimages/jewelry.jpg"
         },
         {
           "name": "Product Photo Retouching",
@@ -96,12 +98,13 @@
     {
       "name": "E-Commerce",
       "description": "Elevate your digital presence with tailored and scalable web applications designed to meet your unique business needs..",
+      "imageUrl": "/pricingimages/essential.jpg",
       "url": "#",
       "categories": [
         {
           "name": "Essential Editing",
           "basePrice": 300,
-          "imageUrl": "https://via.placeholder.com/150"
+          "imageUrl": "/pricingimages/essential.jpg"
         },
         {
           "name": "Amazon, E-Bay, Shopify Ready",
@@ -111,12 +114,12 @@
         {
           "name": "E-Commerce 360° Editing",
           "basePrice": 300,
-          "imageUrl": "https://via.placeholder.com/150"
+          "imageUrl": "/pricingimages/360.gif"
         },
         {
           "name": "Image Optimization",
           "basePrice": 300,
-          "imageUrl": "https://via.placeholder.com/150"
+          "imageUrl": "/pricingimages/imageoptimization.jpg"
         }
       ]
     }
