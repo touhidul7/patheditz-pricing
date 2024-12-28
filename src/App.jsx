@@ -322,7 +322,7 @@ function PriceTable({ service, turnaroundTime, quantity, price, category }) {
               <td className="px-6 lg:px-[43px] py-4">{quantity}</td>
               <td className="px-6 lg:px-[43px] py-4">${price}</td>
               <td className="px-6 lg:px-[43px] py-4">
-              <a href={"path"}>
+              <a href={"https://patheditz.com/contact/"} target="_blank">
                 <button className="px-4 bg-[#594FEE] py-1 rounded-lg text-white">
                  Proceed
                 </button></a>
