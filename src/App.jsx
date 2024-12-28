@@ -103,7 +103,7 @@ console.log(selectedService?.categories[0].name);
                         </h5>
                       </a>
                       <p className="mb-3 font-normal lg:w-[500px] overflow-hidden text-[#3A3A3A]">
-                        {selectedService.description}
+                      {selectedCategory?.content1 || selectedService?.categories[0].content1}
                       </p>
                     </div>
                     {/* Image */}
@@ -114,6 +114,9 @@ console.log(selectedService?.categories[0].name);
                         alt={selectedService.name}
                       />
                     </div>
+                    <p className="mb-3 font-normal lg:w-[500px] overflow-hidden text-[#3A3A3A]">
+                      {selectedCategory?.content2 || selectedService?.categories[0].content2}
+                      </p>
                   </div>
                 </div>
               )}

@@ -1,126 +1,166 @@
 [
-    {
+  {
       "name": "Editing",
       "description": "Transform your online presence with custom, scalable, and secure website development solutions.",
-      "imageUrl": "/pricingimages/clippingpath.png",
+      "imageUrl": "",
       "url": "#",
       "categories": [
-        {
-          "name": "Cliping Path",
-          "basePrice": 100,
-          "imageUrl": "/pricingimages/clippingpath.png"
-        },
-        {
-          "name": "Background Removal",
-          "basePrice": 250,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "Image Masking",
-          "basePrice": 50,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "Ghost Mannequin",
-          "basePrice": 50,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "Shadow Creation",
-          "basePrice": 50,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "Multi-Cliping Path",
-          "basePrice": 50,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "Color Correction",
-          "basePrice": 50,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "E-commerce Image Editing",
-          "basePrice": 50,
-          "imageUrl": "https://via.placeholder.com/150"
-        }
+          {
+              "name": "Cliping Path",
+              "basePrice": 100,
+              "imageUrl": "/pricingimages/clippingpath.png",
+              "content1": "Our clipping path service isolates objects from their backgrounds with precision, ensuring clean and professional visuals for your projects.",
+              "content2": "Perfect for e-commerce, catalogs, and advertisements, our service enhances image quality to captivate your audience."
+          },
+          {
+              "name": "Background Removal",
+              "basePrice": 250,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Easily remove unwanted backgrounds to highlight the subject and create impactful, professional imagery.",
+              "content2": "Ideal for product photos and branding, ensuring a polished look that resonates with customers."
+          },
+          {
+              "name": "Image Masking",
+              "basePrice": 50,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Image masking ensures precise editing for subjects with intricate details like hair or transparent objects.",
+              "content2": "Designed for advanced projects where accuracy and attention to detail are essential."
+          },
+          {
+              "name": "Ghost Mannequin",
+              "basePrice": 50,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Our ghost mannequin service creates a 3D-like effect by removing mannequins, showcasing garments professionally.",
+              "content2": "Ideal for apparel photography, delivering a polished and high-quality presentation."
+          },
+          {
+              "name": "Shadow Creation",
+              "basePrice": 50,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Enhance the depth and realism of your images with our shadow creation service, tailored to your needs.",
+              "content2": "Perfect for e-commerce and promotional visuals, ensuring professional and engaging results."
+          },
+          {
+              "name": "Multi-Clipping Path",
+              "basePrice": 50,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Our multi-clipping path service enables selective editing for complex images with multiple subjects.",
+              "content2": "Essential for industries like fashion, product advertising, and detailed visual adjustments."
+          },
+          {
+              "name": "Color Correction",
+              "basePrice": 50,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Enhance your photos with expert color correction for consistent tones and vibrant aesthetics.",
+              "content2": "Perfect for improving the mood and visual appeal of your imagery, tailored to your vision."
+          },
+          {
+              "name": "E-commerce Image Editing",
+              "basePrice": 50,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Optimize product images to meet e-commerce standards and attract customers with stunning visuals.",
+              "content2": "Designed for online stores, ensuring your images stand out and drive conversions."
+          }
       ]
-    },
-    {
+  },
+  {
       "name": "Retouching",
       "description": "Unlock your online store's full potential with tailored e-commerce solutions that drive sales and enhance customer experience.",
-      "imageUrl": "/pricingimages/2.jpg",
+      "imageUrl": "",
       "url": "#",
       "categories": [
-        {
-          "name": "Photo Retouchning",
-          "basePrice": 200,
-          "imageUrl": "/pricingimages/2.jpg"
-        },
-        {
-          "name": "Jewelry Retouching",
-          "basePrice": 80,
-          "imageUrl": "/public/pricingimages/jewelry.jpg"
-        },
-        {
-          "name": "Product Photo Retouching",
-          "basePrice": 80,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "Beauty Retouching",
-          "basePrice": 80,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "Headshot Retouching",
-          "basePrice": 80,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "Newborn Baby Photo Retouching",
-          "basePrice": 80,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "Food Photo Retouching",
-          "basePrice": 80,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "Real Estate Photo Retouching",
-          "basePrice": 80,
-          "imageUrl": "https://via.placeholder.com/150"
-        }
+          {
+              "name": "Photo Retouching",
+              "basePrice": 200,
+              "imageUrl": "/public/pricingimages/10.jpg",
+              "content1": "Enhance photo quality by removing imperfections and refining overall visuals for a professional touch.",
+              "content2": "Perfect for portraits, event photos, and promotional materials to create lasting impressions."
+          },
+          {
+              "name": "Jewelry Retouching",
+              "basePrice": 80,
+              "imageUrl": "/public/pricingimages/jewelry.jpg",
+              "content1": "Highlight jewelry details with enhanced brilliance and flawless finishing for a polished look.",
+              "content2": "Ideal for advertisements, e-commerce, and high-end catalogs, making your products shine."
+          },
+          {
+              "name": "Product Photo Retouching",
+              "basePrice": 80,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Refine product images for a professional and appealing presentation, removing distractions and enhancing clarity.",
+              "content2": "Perfect for e-commerce platforms to attract customers with visually stunning visuals."
+          },
+          {
+              "name": "Beauty Retouching",
+              "basePrice": 80,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Polish portraits with expert beauty retouching, removing blemishes and enhancing natural features.",
+              "content2": "Ideal for fashion, portfolios, and promotional content, delivering flawless results."
+          },
+          {
+              "name": "Headshot Retouching",
+              "basePrice": 80,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Professional headshot retouching enhances clarity, lighting, and focus for a polished presentation.",
+              "content2": "Perfect for resumes, LinkedIn profiles, and personal branding to leave a strong impression."
+          },
+          {
+              "name": "Newborn Baby Photo Retouching",
+              "basePrice": 80,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Gentle retouching for newborn photos preserves memories with soft tones and a natural touch.",
+              "content2": "Perfect for creating timeless keepsakes with enhanced lighting and minimal distractions."
+          },
+          {
+              "name": "Food Photo Retouching",
+              "basePrice": 80,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Enhance the appeal of food photos with vibrant colors and perfect presentation to entice viewers.",
+              "content2": "Ideal for menus, advertisements, and social media to showcase your culinary creations."
+          },
+          {
+              "name": "Real Estate Photo Retouching",
+              "basePrice": 80,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Improve property visuals by enhancing lighting, correcting colors, and emphasizing features.",
+              "content2": "Perfect for real estate listings, ensuring your properties stand out and attract buyers."
+          }
       ]
-    },
-    {
+  },
+  {
       "name": "E-Commerce",
-      "description": "Elevate your digital presence with tailored and scalable web applications designed to meet your unique business needs..",
-      "imageUrl": "/pricingimages/essential.jpg",
+      "description": "Elevate your digital presence with tailored and scalable web applications designed to meet your unique business needs.",
+      "imageUrl": "",
       "url": "#",
       "categories": [
-        {
-          "name": "Essential Editing",
-          "basePrice": 300,
-          "imageUrl": "/pricingimages/essential.jpg"
-        },
-        {
-          "name": "Amazon, E-Bay, Shopify Ready",
-          "basePrice": 300,
-          "imageUrl": "https://via.placeholder.com/150"
-        },
-        {
-          "name": "E-Commerce 360° Editing",
-          "basePrice": 300,
-          "imageUrl": "/pricingimages/360.gif"
-        },
-        {
-          "name": "Image Optimization",
-          "basePrice": 300,
-          "imageUrl": "/pricingimages/imageoptimization.jpg"
-        }
+          {
+              "name": "Essential Editing",
+              "basePrice": 300,
+              "imageUrl": "/pricingimages/essential.jpg",
+              "content1": "Elevate product photos with essential editing, improving clarity, focus, and overall presentation.",
+              "content2": "Ideal for creating high-quality visuals that align with your brand and boost sales."
+          },
+          {
+              "name": "Amazon, E-Bay, Shopify Ready",
+              "basePrice": 300,
+              "imageUrl": "https://via.placeholder.com/150",
+              "content1": "Optimize images to meet platform-specific requirements for Amazon, eBay, and Shopify listings.",
+              "content2": "Ensures your visuals are ready for maximum visibility and engagement across online platforms."
+          },
+          {
+              "name": "E-Commerce 360° Editing",
+              "basePrice": 300,
+              "imageUrl": "/pricingimages/360.gif",
+              "content1": "Create interactive 360° product views for a comprehensive and engaging customer experience.",
+              "content2": "Ideal for showcasing products in detail and boosting engagement on e-commerce platforms."
+          },
+          {
+              "name": "Image Optimization",
+              "basePrice": 300,
+              "imageUrl": "/pricingimages/imageoptimization.jpg",
+              "content1": "Optimize image sizes for faster website loading while maintaining top-notch quality.",
+              "content2": "Essential for improving website performance, user experience, and SEO rankings."
+          }
       ]
-    }
+  }
 ]
