@@ -126,5 +126,42 @@
               "content2": "Real estate photo retouching improves property visuals by enhancing lighting, correcting colors, and highlighting key features. This service helps properties stand out in listings."
           }
       ]
-  }
+  },
+  {
+    "name": "E-Commerce",
+    "description": "Elevate your digital presence with tailored and scalable web applications designed to meet your unique business needs.",
+    "imageUrl": "",
+    "url": "#",
+    "categories": [
+        {
+            "name": "Essential Editing",
+            "basePrice": 300,
+            "imageUrl": "/pricingimages/essential.jpg",
+            "content1": "What is essential editing for e-commerce?",
+            "content2": "Essential editing involves refining product images to improve clarity, focus, and overall quality. This ensures your visuals align with your brand and attract potential customers."
+        },
+        {
+            "name": "Amazon, E-Bay, Shopify Ready",
+            "basePrice": 300,
+            "imageUrl": "https://via.placeholder.com/150",
+            "content1": "How do we prepare images for Amazon, eBay, and Shopify?",
+            "content2": "This service optimizes your product images to meet platform-specific standards for Amazon, eBay, and Shopify. It ensures your listings gain maximum visibility and engagement."
+        },
+        {
+            "name": "E-Commerce 360° Editing",
+            "basePrice": 300,
+            "imageUrl": "/pricingimages/360.gif",
+            "content1": "What is e-commerce 360° editing?",
+            "content2": "E-commerce 360° editing creates interactive product views, enabling customers to explore items from every angle. This enhances user engagement and boosts sales."
+        },
+        {
+            "name": "Image Optimization",
+            "basePrice": 300,
+            "imageUrl": "/pricingimages/imageoptimization.jpg",
+            "content1": "Why is image optimization important?",
+            "content2": "Image optimization reduces file size without compromising quality, improving website loading speed and user experience. It is also crucial for better SEO performance."
+        }
+    ]
+}
+
 ]

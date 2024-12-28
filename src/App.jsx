@@ -9,8 +9,9 @@ function App() {
   const [services, setServices] = useState([]);
   const [service, setService] = useState("");
   const [category, setCategory] = useState("");
-  const [turnaroundDays, setTurnaroundDays] = useState("");
-  const [complexity, setComplexity] = useState("");
+  const [turnaroundDays, setTurnaroundDays] = useState("24h");
+const [complexity, setComplexity] = useState("Simple");
+
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(null);
   const [submitted, setSubmitted] = useState(false);
@@ -125,9 +126,10 @@ console.log(selectedService?.categories[0].name);
                 </div>
               )}
             </div>
+            <div>
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col justify-end bg-[#F8F6FA] gap-8 shadow-lg rounded-lg p-6 border-[1px] border-gray-200"
+              className="flex flex-col  bg-[#F8F6FA] gap-8 shadow-lg rounded-lg p-6 border-[1px] border-gray-200"
             >
               <div className="input-fields gp-8 flex flex-col justify-between">
                 {/* Service Selection */}
@@ -183,6 +185,7 @@ console.log(selectedService?.categories[0].name);
                 Calculate
               </button>
             </form>
+            </div>
           </div>
         )}
       </section>
@@ -250,6 +253,23 @@ function QuantitySelector({ quantity, setQuantity }) {
   const handleIncrease = () => {
     setQuantity(quantity + 1);
   };
+
+  const handleInputChange = (event) => {
+    const value = parseInt(event.target.value, 10);
+    if (!isNaN(value) && value > 0) {
+      setQuantity(value);
+    } else if (event.target.value === "") {
+      setQuantity(""); // Allow empty input for user flexibility
+    }
+  };
+
+  const handleInputBlur = () => {
+    // Reset to 1 if the field is left empty
+    if (quantity === "" || quantity < 1) {
+      setQuantity(1);
+    }
+  };
+
   return (
     <div className="flex flex-col gap-2">
       <div className="flex items-center space-x-4">
@@ -268,8 +288,10 @@ function QuantitySelector({ quantity, setQuantity }) {
         <input
           type="number"
           value={quantity}
-          readOnly
+          onChange={handleInputChange}
+          onBlur={handleInputBlur}
           className="shadow-sm text-center text-lg rounded-lg focus:ring-primary-500 outline-none focus:border-0 block w-full p-2.5 bg-[#F8F6FA] border-none text-[#393939] focus:ring-primary-500 shadow-sm-light"
+          min="1"
         />
 
         {/* Increase button */}
@@ -283,6 +305,7 @@ function QuantitySelector({ quantity, setQuantity }) {
     </div>
   );
 }
+
 
 function PriceTable({ service, turnaroundTime, quantity, price, category }) {
   return (
@@ -336,24 +359,23 @@ function PriceTable({ service, turnaroundTime, quantity, price, category }) {
 }
 
 function RadioInput({ options, radioinput, setradioinput }) {
-  const [selectedOption, setSelectedOption] = useState("");
-
   const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
     setradioinput(event.target.value);
   };
   return (
     <div className="flex flex-col gap-2">
-      <div className="grid  grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-4">
         {options.map((option) => (
           <label
             key={option}
-            className={`shadow-md text-lg text-center rounded-lg block py-2 px-4 lg:px-10 cursor-pointer border-none focus:ring-primary-500 shadow-sm-light outline-none ${selectedOption === option ? "bg-[#377DFF] text-[#fff]": "bg-[#F8F6FA] text-[#000] hover:bg-[#377dffea] hover:text-white"}`}
+            className={`shadow-md text-lg text-center rounded-lg block py-2 px-4 lg:px-10 cursor-pointer border-none focus:ring-primary-500 shadow-sm-light outline-none ${
+              radioinput === option ? "bg-[#377DFF] text-[#fff]" : "bg-[#F8F6FA] text-[#000] hover:bg-[#377dffea] hover:text-white"
+            }`}
           >
             <input
               type="radio"
               value={option}
-              checked={selectedOption === option && radioinput === option}
+              checked={radioinput === option}
               onChange={handleOptionChange}
               className="hidden"
             />
@@ -364,6 +386,7 @@ function RadioInput({ options, radioinput, setradioinput }) {
     </div>
   );
 }
+
 
 function Loader() {
   return (
