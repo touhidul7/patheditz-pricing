@@ -10,14 +10,12 @@ function App() {
   const [service, setService] = useState("");
   const [category, setCategory] = useState("");
   const [turnaroundDays, setTurnaroundDays] = useState("24h");
-const [complexity, setComplexity] = useState("Simple");
+  const [complexity, setComplexity] = useState("Simple");
 
   const [quantity, setQuantity] = useState(1);
   const [price, setPrice] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
-
-
 
   useEffect(() => {
     axios
@@ -36,9 +34,8 @@ const [complexity, setComplexity] = useState("Simple");
         );
         setLoading(false);
       });
-      
   }, []);
-  
+
   const selectedService = services.find((s) => s.name === service);
   const selectedCategory = selectedService?.categories.find(
     (c) => c.name === category
@@ -47,32 +44,36 @@ const [complexity, setComplexity] = useState("Simple");
   const handleSubmit = (e) => {
     e.preventDefault();
     let basePrice = selectedCategory?.basePrice || selectedService?.categories[0]?.basePrice;
+    let logicnum = selectedCategory?.logic || selectedService?.categories[0]?.logic
 
   
     // Step 1: Complexity-Based Logic
     let complexityBasedPrice = basePrice;
     if (complexity === "Medium") {
-      complexityBasedPrice += basePrice * 0.3; // Add 30%
+      complexityBasedPrice += basePrice * (logicnum/2);
     } else if (complexity === "Complex") {
-      complexityBasedPrice += basePrice * 0.6; // Add 60%
+      complexityBasedPrice += basePrice * logicnum;
     }
   
     // Step 2: Time-Based Logic
     let timeBasedPrice = complexityBasedPrice;
     if (turnaroundDays === "24h") {
-      timeBasedPrice += complexityBasedPrice * 0.33; // Add 33%
+      timeBasedPrice += complexityBasedPrice * (logicnum/2);
     } else if (turnaroundDays === "12h") {
-      timeBasedPrice += complexityBasedPrice * 0.66; // Add 66%
+      timeBasedPrice += complexityBasedPrice * logicnum;
     }
   
     // Step 3: Quantity-Based Logic
     const totalPrice = timeBasedPrice * quantity;
   
-    setPrice(Math.round(totalPrice));
+    setPrice(totalPrice.toFixed(2));
+    // setPrice(totalPrice);
     setSubmitted(true);
   };
   
-console.log(selectedService?.categories[0].name);
+  
+
+  console.log(selectedService?.categories[0].name);
 
   /*  */
   return (
@@ -95,96 +96,108 @@ console.log(selectedService?.categories[0].name);
           </div>
         ) : (
           <div className="grid gap-6 lg:grid-cols-2 grid-cols-1 w-full lg:px-48 px-4">
-            <div >
+            <div>
               {selectedService && (
                 <div className="w-full h-full rounded-lg  p-6  border-gray-200">
                   <div className="flex flex-col gap-4 justify-between">
                     <div>
                       <a href="#">
                         <h5 className="text-2xl font-bold tracking-tight text-[#3A3A3A]">
-                          {selectedCategory?.name || selectedService?.categories[0].name}
+                          {selectedCategory?.name ||
+                            selectedService?.categories[0].name}
                         </h5>
                       </a>
                       <p className="mb-3 font-normal lg:w-[500px] overflow-hidden text-[#3A3A3A]">
-                      Per image {selectedCategory?.name || selectedService?.categories[0].name} starting at just....
-                      ${selectedCategory?.basePrice || selectedService?.categories[0].basePrice}
+                        Per image{" "}
+                        {selectedCategory?.name ||
+                          selectedService?.categories[0].name}{" "}
+                        starting at just.... $
+                        {selectedCategory?.basePrice ||
+                          selectedService?.categories[0].basePrice}
                       </p>
                     </div>
                     {/* Image */}
                     <div className=" w-fit  p-4 rounded-lg">
                       <img
                         className="h-[300px] w-auto lg:w-full serviceimage"
-                        src={selectedCategory?.imageUrl || selectedService?.categories[0].imageUrl}
+                        src={
+                          selectedCategory?.imageUrl ||
+                          selectedService?.categories[0].imageUrl
+                        }
                         alt={selectedService.name}
                       />
                     </div>
                     <p className="mb-3 font-normal lg:w-[500px] overflow-hidden text-[#3A3A3A]">
-                      <h2 className="text-lg font-semibold">{selectedCategory?.content1 || selectedService?.categories[0].content1}</h2>
-                      {selectedCategory?.content2 || selectedService?.categories[0].content2}
-                      </p>
+                      <h2 className="text-lg font-semibold">
+                        {selectedCategory?.content1 ||
+                          selectedService?.categories[0].content1}
+                      </h2>
+                      {selectedCategory?.content2 ||
+                        selectedService?.categories[0].content2}
+                    </p>
                   </div>
                 </div>
               )}
             </div>
             <div>
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col  bg-[#F8F6FA] gap-8 shadow-lg rounded-lg p-6 border-[1px] border-gray-200"
-            >
-              <div className="input-fields gp-8 flex flex-col justify-between">
-                {/* Service Selection */}
-                <InputSelect
-                  disabledvalue={true}
-                  value={service}
-                  placeholder="Select Service"
-                  onChange={(e) => {
-                    setService(e.target.value);
-                    setCategory("");
-                  }}
-                  services={services.map((s) => s.name)}
-                />
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col  bg-[#F8F6FA] gap-8 shadow-lg rounded-lg p-6 border-[1px] border-gray-200"
+              >
+                <div className="input-fields gp-8 flex flex-col justify-between">
+                  {/* Service Selection */}
+                  <InputSelect
+                    disabledvalue={true}
+                    value={service}
+                    placeholder="Select Service"
+                    onChange={(e) => {
+                      setService(e.target.value);
+                      setCategory("");
+                    }}
+                    services={services.map((s) => s.name)}
+                  />
 
-                {/* Service category selection */}
-                {selectedService && selectedService.categories && (
-                  <div className="my-8">
-                    <InputSelect
-                      disabledvalue={false}
-                      value={category}
-                      onChange={(e) => setCategory(e.target.value)}
-                      services={selectedService.categories.map((c) => c.name)}
+                  {/* Service category selection */}
+                  {selectedService && selectedService.categories && (
+                    <div className="my-8">
+                      <InputSelect
+                        disabledvalue={false}
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        services={selectedService.categories.map((c) => c.name)}
+                      />
+                    </div>
+                  )}
+
+                  {/* Complexity  */}
+                  <div className="mb-8">
+                    <RadioInput
+                      options={["Simple", "Medium", "Complex"]}
+                      radioinput={complexity}
+                      setradioinput={setComplexity}
                     />
                   </div>
-                )}
-
-                {/* Complexity  */}
-                <div className="mb-8">
-                  <RadioInput
-                    options={["Simple", "Medium", "Complex"]}
-                    radioinput={complexity}
-                    setradioinput={setComplexity}
+                  {/* Time */}
+                  <div className="mb-8">
+                    <RadioInput
+                      options={["12h", "24h", "48h"]}
+                      radioinput={turnaroundDays}
+                      setradioinput={setTurnaroundDays}
+                    />
+                  </div>
+                  {/* Select Quantity of website */}
+                  <QuantitySelector
+                    quantity={quantity}
+                    setQuantity={setQuantity}
                   />
                 </div>
-                {/* Time */}
-                <div className="mb-8">
-                  <RadioInput
-                    options={["12h", "24h", "48h"]}
-                    radioinput={turnaroundDays}
-                    setradioinput={setTurnaroundDays}
-                  />
-                </div>
-                {/* Select Quantity of website */}
-                <QuantitySelector
-                  quantity={quantity}
-                  setQuantity={setQuantity}
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-[#377DFF] hover:bg-[#0072DD] text-white p-3 rounded-lg"
-              >
-                Calculate
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  className="w-full bg-[#377DFF] hover:bg-[#0072DD] text-white p-3 rounded-lg"
+                >
+                  Calculate
+                </button>
+              </form>
             </div>
           </div>
         )}
@@ -195,7 +208,7 @@ console.log(selectedService?.categories[0].name);
           <PriceTable
             service={service}
             category={category || selectedService?.categories[0].name}
-            turnaroundTime={`${turnaroundDays} days`}
+            turnaroundTime={turnaroundDays}
             quantity={quantity}
             price={price}
           />
@@ -306,7 +319,6 @@ function QuantitySelector({ quantity, setQuantity }) {
   );
 }
 
-
 function PriceTable({ service, turnaroundTime, quantity, price, category }) {
   return (
     <div>
@@ -318,7 +330,7 @@ function PriceTable({ service, turnaroundTime, quantity, price, category }) {
                 Service
               </th>
               <th scope="col" className="px-6 lg:px-[43px] py-3">
-                Turnaround Time
+                Deadline
               </th>
               <th scope="col" className="px-6 lg:px-[43px] py-3">
                 Service Type
@@ -345,10 +357,11 @@ function PriceTable({ service, turnaroundTime, quantity, price, category }) {
               <td className="px-6 lg:px-[43px] py-4">{quantity}</td>
               <td className="px-6 lg:px-[43px] py-4">${price}</td>
               <td className="px-6 lg:px-[43px] py-4">
-              <a href={"https://patheditz.com/contact/"} target="_blank">
-                <button className="px-4 bg-[#594FEE] py-1 rounded-lg text-white">
-                 Proceed
-                </button></a>
+                <a href={"https://patheditz.com/contact/"} target="_blank">
+                  <button className="px-4 bg-[#594FEE] py-1 rounded-lg text-white">
+                    Proceed
+                  </button>
+                </a>
               </td>
             </tr>
           </tbody>
@@ -369,7 +382,9 @@ function RadioInput({ options, radioinput, setradioinput }) {
           <label
             key={option}
             className={`shadow-md text-lg text-center rounded-lg block py-2 px-4 lg:px-10 cursor-pointer border-none focus:ring-primary-500 shadow-sm-light outline-none ${
-              radioinput === option ? "bg-[#377DFF] text-[#fff]" : "bg-[#F8F6FA] text-[#000] hover:bg-[#377dffea] hover:text-white"
+              radioinput === option
+                ? "bg-[#377DFF] text-[#fff]"
+                : "bg-[#F8F6FA] text-[#000] hover:bg-[#377dffea] hover:text-white"
             }`}
           >
             <input
@@ -386,7 +401,6 @@ function RadioInput({ options, radioinput, setradioinput }) {
     </div>
   );
 }
-
 
 function Loader() {
   return (
