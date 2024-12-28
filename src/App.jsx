@@ -35,8 +35,9 @@ function App() {
         );
         setLoading(false);
       });
+      
   }, []);
-
+  
   const selectedService = services.find((s) => s.name === service);
   const selectedCategory = selectedService?.categories.find(
     (c) => c.name === category
@@ -45,6 +46,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     let basePrice = selectedCategory?.basePrice || selectedService?.categories[0]?.basePrice;
+
   
     // Step 1: Complexity-Based Logic
     let complexityBasedPrice = basePrice;
@@ -103,7 +105,8 @@ console.log(selectedService?.categories[0].name);
                         </h5>
                       </a>
                       <p className="mb-3 font-normal lg:w-[500px] overflow-hidden text-[#3A3A3A]">
-                      {selectedCategory?.content1 || selectedService?.categories[0].content1}
+                      Per image {selectedCategory?.name || selectedService?.categories[0].name} starting at just....
+                      ${selectedCategory?.basePrice || selectedService?.categories[0].basePrice}
                       </p>
                     </div>
                     {/* Image */}
@@ -115,6 +118,7 @@ console.log(selectedService?.categories[0].name);
                       />
                     </div>
                     <p className="mb-3 font-normal lg:w-[500px] overflow-hidden text-[#3A3A3A]">
+                      <h2 className="text-lg font-semibold">{selectedCategory?.content1 || selectedService?.categories[0].content1}</h2>
                       {selectedCategory?.content2 || selectedService?.categories[0].content2}
                       </p>
                   </div>
