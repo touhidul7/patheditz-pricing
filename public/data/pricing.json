@@ -23,15 +23,15 @@
           },
           {
               "name": "Image Masking",
-              "logic": 1.7,
-              "basePrice": 0.485,
+              "logic": 1.67,
+              "basePrice": 0.49,
               "imageUrl": "/pricingimages/Image Masking Service.jpg",
               "content1": "Why is image masking important?",
               "content2": "Image masking is crucial for editing objects with fine edges or transparent elements like hair or glass. This advanced technique ensures precision, especially in complex compositions, delivering professional results."
           },
           {
               "name": "Ghost Mannequin",
-              "logic": 4.5,
+              "logic": 1.853,
               "basePrice": 0.49,
               "imageUrl": "/pricingimages/Ghost Mannequin.jpg",
               "content1": "What does ghost mannequin editing offer?",

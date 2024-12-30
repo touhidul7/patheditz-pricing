@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { CircleMinus, CirclePlus } from "lucide-react";
 import "./App.css";
@@ -16,7 +17,7 @@ function App() {
   const [price, setPrice] = useState(null);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
-
+  const [submittedData, setSubmittedData] = useState([]);
   useEffect(() => {
     axios
       .get("/data/pricing.json")
@@ -43,35 +44,44 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let basePrice = selectedCategory?.basePrice || selectedService?.categories[0]?.basePrice;
-    let logicnum = selectedCategory?.logic || selectedService?.categories[0]?.logic
+    let basePrice =
+      selectedCategory?.basePrice || selectedService?.categories[0]?.basePrice;
+    let logicnum =
+      selectedCategory?.logic || selectedService?.categories[0]?.logic;
 
-  
     // Step 1: Complexity-Based Logic
     let complexityBasedPrice = basePrice;
     if (complexity === "Medium") {
-      complexityBasedPrice += basePrice * (logicnum/2);
+      complexityBasedPrice += basePrice * (logicnum / 2);
     } else if (complexity === "Complex") {
       complexityBasedPrice += basePrice * logicnum;
     }
-  
+
     // Step 2: Time-Based Logic
     let timeBasedPrice = complexityBasedPrice;
     if (turnaroundDays === "24h") {
-      timeBasedPrice += complexityBasedPrice * (logicnum/2);
+      timeBasedPrice += complexityBasedPrice * (logicnum / 2);
     } else if (turnaroundDays === "12h") {
       timeBasedPrice += complexityBasedPrice * logicnum;
     }
-  
+
     // Step 3: Quantity-Based Logic
     const totalPrice = timeBasedPrice * quantity;
-  
+
     setPrice(totalPrice.toFixed(2));
-    // setPrice(totalPrice);
-    setSubmitted(true);
+
+    // Save submitted data
+    const newData = {
+      service,
+      category: category || selectedService?.categories[0]?.name,
+      turnaroundDays,
+      complexity,
+      quantity,
+      price: totalPrice.toFixed(2),
+    };
+
+    setSubmittedData([...submittedData, newData]);
   };
-  
-  
 
   console.log(selectedService?.categories[0].name);
 
@@ -202,8 +212,74 @@ function App() {
           </div>
         )}
       </section>
-
+      {/* Pricing Table */}
       <div className="mt-8 lg:px-52 mb-16">
+        {submittedData.length > 0 && (
+          <table className="w-full border-collapse border border-gray-200">
+            <thead className="text-xs uppercase bg-gray-200 text-left">
+              <tr>
+                <th className="border border-gray-200 p-2">Service</th>
+                <th className="border border-gray-200 p-2">Category</th>
+                <th className="border border-gray-200 p-2">Turnaround Time</th>
+                <th className="border border-gray-200 p-2">Complexity</th>
+                <th className="border border-gray-200 p-2">Quantity</th>
+                <th className="border border-gray-200 p-2">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {submittedData.map((data, index) => (
+                <tr key={index}>
+                  <td className="border border-gray-200 p-2">{data.service}</td>
+                  <td className="border border-gray-200 p-2">
+                    {data.category}
+                  </td>
+                  <td className="border border-gray-200 p-2">
+                    {data.turnaroundDays}
+                  </td>
+                  <td className="border border-gray-200 p-2">
+                    {data.complexity}
+                  </td>
+                  <td className="border border-gray-200 p-2">
+                    {data.quantity}
+                  </td>
+                  <td className="border border-gray-200 p-2">${data.price}</td>
+                </tr>
+              ))}
+              <tr>
+                <td className="border border-gray-200 p-2"></td>
+                <td className="border border-gray-200 p-2"></td>
+                <td className="border border-gray-200 p-2"></td>
+                <td className="border border-gray-200 p-2"></td>
+                <td className="border border-gray-200 bg-gray-100 p-2">
+                  Total Price
+                </td>
+                <td className="border border-gray-200 p-2 bg-gray-100">
+                  {submittedData.reduce(
+                    (acc, item) => acc + parseFloat(item.price),
+                    0
+                  )}
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td className="text-center p-2">
+                  <a href={"https://patheditz.com/contact/"} target="_blank">
+                    <button className="px-4 bg-[#594FEE] hover:bg-[#6960eb] py-1 rounded-lg text-white">
+                      Proceed to next
+                    </button>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        )}
+      </div>
+      {/* Pricing Table------------ */}
+      {/* <div className="mt-8 lg:px-52 mb-16">
         {submitted && (
           <PriceTable
             service={service}
@@ -213,7 +289,7 @@ function App() {
             price={price}
           />
         )}
-      </div>
+      </div> */}
     </>
   );
 }
