@@ -1,5 +1,6 @@
 {
   "name": "pricing",
+  "homepage": "https://patheditz.com/calculation/",
   "private": true,
   "version": "0.0.0",
   "type": "module",

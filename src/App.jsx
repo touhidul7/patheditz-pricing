@@ -54,7 +54,7 @@ function App() {
     if (complexity === "Medium") {
       complexityBasedPrice += basePrice * (logicnum / 2);
     } else if (complexity === "Complex") {
-      complexityBasedPrice += basePrice * logicnum;
+      complexityBasedPrice += (basePrice * logicnum);
     }
 
     // Step 2: Time-Based Logic
@@ -66,7 +66,13 @@ function App() {
     }
 
     // Step 3: Quantity-Based Logic
-    const totalPrice = timeBasedPrice * quantity;
+    let totalPrice;
+    if(complexity === "Complex" && turnaroundDays === "48h"){
+       totalPrice = (timeBasedPrice * quantity)+ 3;
+    }else{
+       totalPrice = timeBasedPrice * quantity;
+    }
+    // const totalPrice = timeBasedPrice * quantity;
 
     setPrice(totalPrice.toFixed(2));
 
@@ -88,15 +94,17 @@ function App() {
   /*  */
   return (
     <>
-      <section className="py-8 lg:py-0 lg:my-16 px-4 lg:px-0 mx-auto max-w-screen lg:mt-48 mt-20">
+      <section className="py-8 lg:py-0 lg:my-16 px-4 lg:px-0 mx-auto max-w-screen lg:mt-16 mt-20">
         <div className="text-center pb-8 lg:mb-16 mb-10">
           <h6 className="text-center text-white contact-heading lg:text-[60px]  text-[20px] font-normal lg:leading-[80px]">
-            <div className="text-[#3A3A3A] font-bold bg-clip-text">
-              Our Pricing
+            <div className="lg:flex lg:justify-center lg:text-[40px] text-[18px] leading-[30px] gap-2 uppercase lg:mb-0 mb-2">
+            <span className="font-bold text-[#3A3A3A]">Get an Accurate</span> <span className="text-[#3A3A3A]">Price Estimate</span></div>
+            <div className="text-[#3A3A3A]  font-bold bg-clip-text uppercase lg:mb-0 mb-2">
+            Photo Editing Services Calculator
             </div>
           </h6>
-          <p className="lg:text-[20px] font-normal lg:leading-[50px] text-[#3A3A3A] lg:px-44 text-center">
-            Select your requirements and see our service pricing to get started
+          <p className="lg:text-[20px] font-normal lg:leading-[30px] text-[#3A3A3A] lg:px-44 text-justify lg:text-center">
+          In your hands lies the power! You can now estimate the cost of your project based on its complexity by using our interactive pricing calculator. We meticulously complete each order by hand. Every job is unique, and so is the cost.
           </p>
         </div>
 
@@ -108,7 +116,7 @@ function App() {
           <div className="grid gap-6 lg:grid-cols-2 grid-cols-1 w-full lg:px-48 px-4">
             <div>
               {selectedService && (
-                <div className="w-full h-full rounded-lg  p-6  border-gray-200">
+                <div className="w-full h-full rounded-lg  lg:p-6  border-gray-200">
                   <div className="flex flex-col gap-4 justify-between">
                     <div>
                       <a href="#">
@@ -129,7 +137,7 @@ function App() {
                     {/* Image */}
                     <div className=" w-fit  p-4 rounded-lg">
                       <img
-                        className="h-[300px] w-auto lg:w-full serviceimage"
+                        className="lg:h-[300px] w-auto lg:w-full serviceimage"
                         src={
                           selectedCategory?.imageUrl ||
                           selectedService?.categories[0].imageUrl
@@ -268,7 +276,7 @@ function App() {
                 <td></td>
                 <td className="text-center p-2">
                   <a href={"https://patheditz.com/contact/"} target="_blank">
-                    <button className="px-4 bg-[#594FEE] hover:bg-[#6960eb] py-1 rounded-lg text-white">
+                    <button className="px-4 bg-[#377DFF] hover:bg-[#0072DD] py-1 rounded-lg text-white">
                       Proceed to next
                     </button>
                   </a>
@@ -361,11 +369,11 @@ function QuantitySelector({ quantity, setQuantity }) {
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-1 lg:space-x-4">
         {/* Decrease button */}
         <div
           onClick={handleDecrease}
-          className={`shadow-sm text-lg rounded-lg block py-2 px-10 cursor-pointer bg-[#F8F6FA] border-none text-[#393939] focus:ring-primary-500 shadow-sm-light ${
+          className={`shadow-sm text-lg rounded-lg block py-2 lg:px-10 px-8 cursor-pointer bg-[#F8F6FA] border-none text-[#393939] focus:ring-primary-500 shadow-sm-light ${
             quantity <= 1 ? "opacity-50 cursor-not-allowed" : ""
           }`}
           aria-disabled={quantity <= 1}
@@ -379,14 +387,14 @@ function QuantitySelector({ quantity, setQuantity }) {
           value={quantity}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
-          className="shadow-sm text-center text-lg rounded-lg focus:ring-primary-500 outline-none focus:border-0 block w-full p-2.5 bg-[#F8F6FA] border-none text-[#393939] focus:ring-primary-500 shadow-sm-light"
+          className="shadow-sm text-center text-lg rounded-lg focus:ring-primary-500 outline-none focus:border-0 block w-full p-1 lg:p-2.5 bg-[#F8F6FA] border-none text-[#393939] focus:ring-primary-500 shadow-sm-light"
           min="1"
         />
 
         {/* Increase button */}
         <div
           onClick={handleIncrease}
-          className="shadow-sm text-lg rounded-lg block py-2 px-10 cursor-pointer bg-[#F8F6FA] border-none text-[#393939] focus:ring-primary-500 shadow-sm-light"
+          className="shadow-sm text-lg rounded-lg block py-2 lg:px-10 px-8 cursor-pointer bg-[#F8F6FA] border-none text-[#393939] focus:ring-primary-500 shadow-sm-light"
         >
           <CirclePlus />
         </div>
@@ -457,7 +465,7 @@ function RadioInput({ options, radioinput, setradioinput }) {
         {options.map((option) => (
           <label
             key={option}
-            className={`shadow-md text-lg text-center rounded-lg block py-2 px-4 lg:px-10 cursor-pointer border-none focus:ring-primary-500 shadow-sm-light outline-none ${
+            className={`shadow-md lg:text-lg text-center rounded-lg block py-2 px- lg:px-10 cursor-pointer border-none focus:ring-primary-500 shadow-sm-light outline-none ${
               radioinput === option
                 ? "bg-[#377DFF] text-[#fff]"
                 : "bg-[#F8F6FA] text-[#000] hover:bg-[#377dffea] hover:text-white"
